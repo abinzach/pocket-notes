@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { FaTrash } from 'react-icons/fa';
 import NoteIcon from './NoteIcon';
 
-import CreateGroup from './AddNoteModal';
+import CreateGroup from './CreateGroupModal';
 
 const LeftSidebar = ({ selectedNote, setSelectedNote }) => {
   const [data, setData] = useState([]);
