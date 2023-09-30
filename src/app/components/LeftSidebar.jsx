@@ -2,7 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import { FaTrash } from 'react-icons/fa';
 import NoteIcon from './NoteIcon';
-import AddNoteModal from './AddNoteModal';
+
+import CreateGroup from './AddNoteModal';
 
 const LeftSidebar = ({ selectedNote, setSelectedNote }) => {
   const [data, setData] = useState([]);
@@ -23,23 +24,6 @@ const LeftSidebar = ({ selectedNote, setSelectedNote }) => {
     localStorage.setItem('groups', JSON.stringify(data));
   };
 
-  const handleDeleteGroup = (index) => {
-    // Remove the group at the specified index
-    data.splice(index, 1);
-
-    // Save the updated groups to localStorage
-    localStorage.setItem('groups', JSON.stringify(data));
-
-    // Determine the next selected note
-    let nextSelectedNote = null;
-    if (data.length > 0) {
-      // If there are groups left, select the first one
-      nextSelectedNote = data[0];
-    }
-
-    // Set the selected note
-    setSelectedNote(nextSelectedNote);
-  };
 
   return (
     <div className='bg-white relative h-screen w-1/3 flex flex-col overflow-y-scroll'>
@@ -70,7 +54,7 @@ const LeftSidebar = ({ selectedNote, setSelectedNote }) => {
         </div>
       </div>
       </div>
-      <AddNoteModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onAdd={handleAddGroup} />
+      <CreateGroup isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onAdd={handleAddGroup} />
     </div>
   );
 };
